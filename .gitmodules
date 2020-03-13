@@ -1,0 +1,6 @@
+[submodule "armadillo-code"]
+	path = armadillo-code
+	url = https://gitlab.com/conradsnicta/armadillo-code.git
+[submodule "OpenBLAS"]
+	path = OpenBLAS
+	url = https://github.com/xianyi/OpenBLAS.git
