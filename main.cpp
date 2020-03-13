@@ -1,8 +1,8 @@
-#include <iostream>
 #include "armadillo"
 #include "LinearOptimizationProblem.hpp"
 
 using namespace arma;
+
 
 void default_main() {
     mat A = mat(3, 2);
@@ -33,6 +33,8 @@ void default_main() {
     LinearOptimizationResult result = linearOptimizationProblem.maximize(x_0, gamma, 0.0001, "affine-scaling");
     result.result.print();
 }
+
+
 
 int main() {
     default_main();
