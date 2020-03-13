@@ -1,6 +1,7 @@
 #include <iostream>
 #include "armadillo"
-#include "optimization.hpp"
+#include "LinearOptimizationProblem.hpp"
+
 using namespace arma;
 
 void default_main() {
@@ -28,8 +29,9 @@ void default_main() {
     x_0.at(1) = 0.1;
     double_t gamma = 0.5;
 
-    vec res = affine_scaling_lp(A, b, c, x_0, gamma);
-    res.print("Result: ");
+    LinearOptimizationProblem linearOptimizationProblem = LinearOptimizationProblem(A, b, c);
+    LinearOptimizationResult result = linearOptimizationProblem.maximize(x_0, gamma, 0.0001, "affine-scaling");
+    result.result.print();
 }
 
 int main() {

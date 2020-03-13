@@ -7,6 +7,7 @@ include_directories(armadillo-code/include)
 include_directories(matplotlib-cpp)
 add_executable(LIPA main.cpp
         armadillo-code/include/armadillo
-        optimization.cpp optimization.hpp
+        LinearOptimizationProblem.cpp LinearOptimizationProblem.hpp
+        LinearOptimizationResult.cpp LinearOptimizationResult.hpp
         matplotlib-cpp/matplotlibcpp.h)
 target_link_libraries(LIPA ${CMAKE_SOURCE_DIR}/OpenBLAS/build/lib/libopenblas.a)
