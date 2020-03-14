@@ -15,7 +15,7 @@ On it's current state, the project is implemented as a solution to the
 
 Download repo with ```git clone --recursive https://github.com/AndreyBychkov/LIPA.git```
 
-If any issues with submodules arise, try checking [this](https://git-scm.com/book/en/v2/Git-Tools-Submodules) article.
+If any issues with submodules arise, try checking out [this](https://git-scm.com/book/en/v2/Git-Tools-Submodules) article.
 
 ### 2. Building
 
@@ -26,7 +26,7 @@ for general information about installing this dependencies.
 #### Building OpenBLAS
 
 We use OpenBLAS as realisation of BLAS + LAPACK bundle.
- Consider checking [it's building guide](https://github.com/xianyi/OpenBLAS#installation-from-source)   
+ Consider checking [it's building manual](https://github.com/xianyi/OpenBLAS#installation-from-source).   
  
 Our steps for CMake + MinGW:
 1. `cd OpenBLAS`
@@ -35,8 +35,8 @@ Our steps for CMake + MinGW:
 4. `cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release`
 5. `cmake --build . -j --target all`
 
-This will produce `lib` directory in `OpenBLAS/build` with `libopenblas.a`
-which we use in Cmake:
+It will produce directory `lib` in `OpenBLAS/build` with `libopenblas.a` in it 
+which we link in Cmake as follows:
 ```cmake
 target_link_libraries(LIPA ${CMAKE_SOURCE_DIR}/OpenBLAS/build/lib/libopenblas.a)
 ```
@@ -51,7 +51,7 @@ Define linear optimization problem as follows:
 
 <img src="https://latex.codecogs.com/png.latex?%5Clarge%20optimize%5C%20c%5ET%20%5C%5C%20subject%5C%20to%5C%20Ax%20%5Cle%20b%20%5C%5C"/>
 <br/><br/>  
-In our code it following definition:
+In our code it is defined as:
 
 ```c++
 LinearOptimizationProblem problem = LinearOptimizationProblem(A, b, c);
@@ -64,7 +64,7 @@ LinearOptimizationProblem problem = LinearOptimizationProblem(A, b, c);
 LinearOptimizationResult result = problem.maximize(x_0, gamma, mir_err, method);
 ```
 * Minimization:
-For minimization replace vector `c` with `-c` and  consider it as maximization problem.
+For minimization replace vector `c` with negative `-c` and  consider it as maximization problem.
 ```c++
 LinearOptimizationProblem problem = LinearOptimizationProblem(A, b, -c);
 LinearOptimizationResult result = problem.maximize(x_0, gamma, mir_err, method);
@@ -73,7 +73,7 @@ LinearOptimizationResult result = problem.maximize(x_0, gamma, mir_err, method);
 ### Results
 
 In `LinearOptimizationResult` class we store the solution itself as well as utility information like
-intermediate solutions and number of iterations.
+intermediate solutions and the number of iterations.
 
 ```c++
 result.result.print("Solution x:");
