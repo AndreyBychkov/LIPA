@@ -66,7 +66,8 @@ LinearOptimizationResult result = problem.maximize(x_0, gamma, mir_err, method);
 * Minimization:
 For minimization replace vector `c` with negative `-c` and  consider it as maximization problem.
 ```c++
-LinearOptimizationProblem problem = LinearOptimizationProblem(A, b, -c);
+vec c_neg = -c;
+LinearOptimizationProblem problem = LinearOptimizationProblem(A, b, c_neg);
 LinearOptimizationResult result = problem.maximize(x_0, gamma, mir_err, method);
 ```
 
