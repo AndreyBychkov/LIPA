@@ -29,8 +29,8 @@ void default_main() {
     x_0.at(1) = 0.1;
     double_t gamma = 0.5;
 
-    LinearOptimizationProblem linearOptimizationProblem = LinearOptimizationProblem(A, b, c);
-    LinearOptimizationResult result = linearOptimizationProblem.maximize(x_0, gamma, 0.0001, "affine-scaling");
+    LinearOptimizationProblem problem = LinearOptimizationProblem(A, b, c);
+    LinearOptimizationResult result = problem.maximize(x_0, gamma, 0.0001, "affine-scaling");
     result.result.print();
 }
 
