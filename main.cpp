@@ -32,6 +32,7 @@ void default_main() {
     LinearOptimizationProblem problem = LinearOptimizationProblem(A, b, c);
     LinearOptimizationResult result = problem.maximize(x_0, gamma, 0.0001, "affine-scaling");
     result.result.print();
+    result.intermediates_to_csv("results.csv");
 }
 
 

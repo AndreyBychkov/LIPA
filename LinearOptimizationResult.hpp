@@ -23,6 +23,8 @@ public:
                              const vec x_0,
                              const double_t gamma,
                              const size_t steps_num);
+
+    void intermediates_to_csv(std::string filename);
 };
 
 
