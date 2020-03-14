@@ -7,6 +7,13 @@
 
 using namespace std;
 
+/// Wrapper over result of LinearOptimizationProblem
+///
+/// \param result - resulting point x
+/// \param intermediates - intermediate points x_k
+/// \param x_0 - initial point
+/// \param gamma - step size coefficient. Must be 0 < gamma < 1.
+/// \param steps_num - steps number of algorithm
 LinearOptimizationResult::LinearOptimizationResult(const vec result,
                                                    const std::vector<vec> intermediates,
                                                    const vec x_0,
@@ -16,6 +23,7 @@ LinearOptimizationResult::LinearOptimizationResult(const vec result,
 
 }
 
+/// Writes intermediate points to csv file. Intended for algorithm visualization.
 void LinearOptimizationResult::intermediates_to_csv(string filename) {
     ofstream file;
     file.open(filename, ios::trunc);

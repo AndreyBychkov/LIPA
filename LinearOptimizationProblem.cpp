@@ -1,8 +1,19 @@
 #include "LinearOptimizationProblem.hpp"
 
-
+/// Definition of Linear Omtimization Problem
+///
+/// @param A - condition matrix from Ax < b
+/// @param b - condition vector from Ax < b
+/// @param c - coefficients in target function c^T x
 LinearOptimizationProblem::LinearOptimizationProblem(const mat &A, const vec &b, const vec &c) : A(A), b(b), c(c) {}
 
+/// Solves defined problem
+///
+/// \param x_0 - initial point. Must be within borders defined in Ax < b
+/// \param gamma - step size coefficient. Must be 0 < gamma < 1.
+/// \param min_error - minimal Mean Absolute Error (MAE) value for mae(x_k, x_k+1) for which the algorithm stops
+/// \param method - method of optimization. For now, only 'affine-scaling' is available.
+/// \return result point with some utility information.
 LinearOptimizationResult
 LinearOptimizationProblem::maximize(const vec &x_0, const double_t gamma, double_t min_error, const std::string &method) {
     vec x = x_0;
@@ -29,6 +40,7 @@ vec LinearOptimizationProblem::maximize_iter(const vec &x, double_t gamma, std::
     exit(-1);
 }
 
+/// Algorithm I from https://doi.org/10.1007/BF01587095
 vec LinearOptimizationProblem::affine_scaling(const vec &x, double_t gamma) {
     vec v_k = b - A * x;
     mat diag_v = diagmat(v_k);
